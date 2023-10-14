@@ -31,7 +31,7 @@ class ConsultationRequestController < ApplicationController
             )
             #условный ответный post-запрос#
             res = @result["results"]
-            recommendation = {:consultation_request_id => request.id, :recomendation_text => res.to_json}
+            recommendation = {:consultation_request_id => request.id, :recommendation_text => res.to_json}
             @result = HTTParty.post("http://localhost:3000/consultation_requests/#{request.patient_id}/recommendations",
                 :body => recommendation.to_json,
                 :headers => {"Content-Type" => "text/json"})
